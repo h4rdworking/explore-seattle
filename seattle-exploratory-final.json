@@ -1,0 +1,156 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mlgljs"},
+  "sources": {
+    "contours": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/QAcontours.pmtiles"
+    },
+    "streets": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/QAstreets.pmtiles"
+    },
+    "CTs": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/final-HHstats.pmtiles"
+    },
+    "sdot": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/git-QAsdot.pmtiles"
+    },
+    "65stats": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/seastats_65.pmtiles"
+    },
+    "percent_houses_65": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/percent_houses_65.pmtiles"
+    },
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+    },
+    "qa-streets": {
+      "type": "vector",
+      "url": "pmtiles://https://h4rdworking.github.io/explore-seattle/git-QAstreets.pmtiles"
+    },
+    "thunderforest_transport": {
+      "type": "vector",
+      "url": "https://tile.thunderforest.com/thunderforest.transport-v2.json?apikey=b71f7f0ba4064f5eb9e903859a9cf5c6"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "% households 65+",
+      "type": "fill",
+      "source": "65stats",
+      "source-layer": "stats-finalclip",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-opacity": 0.9,
+        "fill-color": {
+          "property": "percent houses 65+",
+          "type": "interval",
+          "stops": [
+            [{"value": 0, "zoom": 10}, "rgba(255, 255, 255, 1)"],
+            [{"value": 9, "zoom": 10}, "rgba(213, 209, 253, 1)"],
+            [{"value": 12, "zoom": 10}, "rgba(195, 177, 255, 1)"],
+            [{"value": 14, "zoom": 10}, "rgba(148, 121, 251, 1)"],
+            [{"value": 15, "zoom": 10}, "rgba(78, 82, 241, 1)"]
+          ]
+        },
+        "fill-layer-opacity": 1
+      }
+    },
+    {
+      "id": "land-tiles",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "layout": {"visibility": "none"},
+      "paint": {"fill-color": "rgba(10, 123, 25, 1)", "fill-opacity": 0.2}
+    },
+    {
+      "id": "water-open",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "paint": {"fill-color": "rgba(146, 206, 234, 1)"}
+    },
+    {
+      "id": "streets2",
+      "type": "line",
+      "source": "thunderforest_transport",
+      "source-layer": "road",
+      "paint": {"line-opacity": 0.1}
+    },
+    {
+      "id": "contour 2",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "git-QAcontours",
+      "paint": {
+        "line-opacity": 0.75,
+        "line-layer-opacity": 0.5,
+        "line-width": 1
+      }
+    },
+    {
+      "id": "sdot points-copy",
+      "type": "heatmap",
+      "source": "sdot",
+      "source-layer": "git-QAsdot",
+      "filter": ["all"],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "heatmap-radius": 20,
+        "heatmap-weight": 0.1,
+        "heatmap-intensity": 0.5,
+        "heatmap-opacity": 0.3
+      }
+    },
+    {
+      "id": "sdot points",
+      "type": "circle",
+      "source": "sdot",
+      "source-layer": "git-QAsdot",
+      "layout": {"visibility": "none"},
+      "paint": {"circle-radius": 2.5, "circle-opacity": 0.25}
+    },
+    {
+      "id": "CT",
+      "type": "fill",
+      "source": "CTs",
+      "source-layer": "stats-finalclip",
+      "filter": ["all"],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "fill-opacity": 0.75,
+        "fill-color": {
+          "property": "Householder_65_years_and_over",
+          "type": "interval",
+          "stops": [
+            [{"value": 0, "zoom": 10}, "rgba(244, 241, 251, 1)"],
+            [{"value": 200, "zoom": 10}, "rgba(198, 201, 235, 1)"],
+            [{"value": 291, "zoom": 10}, "rgba(157, 167, 255, 1)"],
+            [{"value": 346, "zoom": 10}, "rgba(116, 124, 255, 1)"],
+            [{"value": 381, "zoom": 10}, "rgba(66, 95, 255, 1)"],
+            [{"value": 711, "zoom": 10}, "rgba(20, 49, 243, 1)"]
+          ]
+        },
+        "fill-layer-opacity": 1
+      }
+    },
+    {
+      "id": "streets3",
+      "type": "line",
+      "source": "thunderforest_transport",
+      "source-layer": "path",
+      "paint": {"line-opacity": 0.1}
+    }
+  ],
+  "id": "ysmbgoo"
+}
